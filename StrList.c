@@ -1,3 +1,6 @@
+//RAN MIZRAHI 314809625
+//StrList.c
+
 #include "StrList.h"
 #include <stdio.h>
 #include <string.h>
@@ -143,13 +146,16 @@ void StrList_print(const StrList* StrList)
     int flag = isEmpty(StrList);
     if (flag)
     {
+        printf("\n");
         return;
     }
 
     Node* current = StrList->_head;
+    printf("%s", current->_data);
+    current = current->_next;
     while (current != NULL) 
     {
-        printf("%s ", current->_data);
+        printf(" %s", current->_data);
         current = current->_next;
     }
     printf("\n");
@@ -285,6 +291,11 @@ void StrList_removeAt(StrList* StrList, int index)
 
 int StrList_isEqual(const StrList* StrList1, const StrList* StrList2)
 {
+    if (StrList1 == NULL && StrList2 == NULL)
+    {
+        return 1;
+    }
+
     if ((StrList1 == NULL || StrList2 == NULL) && (StrList1->_size != StrList2->_size))
     {
         return 0;
@@ -292,10 +303,10 @@ int StrList_isEqual(const StrList* StrList1, const StrList* StrList2)
 
     Node* current1 = StrList1->_head;
     Node* current2 = StrList2->_head;
-    int isCmp = strcmp(current1->_data, current2->_data);
 
     while (current1 != NULL && current2 != NULL) 
     {
+        int isCmp = strcmp(current1->_data, current2->_data);
         if (isCmp != 0)
         {
             return 0;
