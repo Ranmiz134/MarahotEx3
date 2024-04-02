@@ -8,12 +8,12 @@ FLAGS= -Wall -g
 
 all: StrList
 
-StrList: $(OBJECTS_MAIN) StrList.a
+StrList: $(OBJECTS_MAIN) 
 	$(CC) $(FLAGS) -o StrList $(OBJECTS_MAIN) 
 StrList.o: StrList.c StrList.h
-	$(CC) $(FLAGS) -c -fPIC -o StrList.o StrList.c  
-Main.o: test.c StrList.h
-	$(CC) $(FLAGS) -c -fPIC -o Main.o Main.c 
+	$(CC) $(FLAGS) -c StrList.c  
+Main.o: Main.c StrList.h
+	$(CC) $(FLAGS) -c Main.c 
 
 .PHONY: clean all
 
